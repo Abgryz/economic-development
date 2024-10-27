@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.economic.development.ApplicationController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <children>
+         <Pane layoutX="14.0" layoutY="14.0" prefWidth="760.0">
+            <children>
+               <TextField fx:id="yearField" layoutX="14.0" layoutY="14.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="76.0" />
+               <Button fx:id="yearButton" layoutX="99.0" layoutY="14.0" mnemonicParsing="false" text="Обрати рік" />
+            </children>
+            <padding>
+               <Insets bottom="15.0" />
+            </padding>
+         </Pane>
+          <TableView fx:id="countryTable" layoutX="-1.0" layoutY="68.0" prefHeight="468.0" prefWidth="760.0">
+            <columns>
+                <TableColumn fx:id="countyName" prefWidth="163.0" text="Назва країни" />
+                <TableColumn fx:id="countryCode" prefWidth="115.0" text="Код країни" />
+                <TableColumn fx:id="gdp" prefWidth="192.0" text="ВВП" />
+                <TableColumn fx:id="unemployment" prefWidth="153.0" text="Безробіття" />
+                <TableColumn fx:id="inflation" prefWidth="136.0" text="Інфляція" />
+            </columns>
+          </TableView>
+      </children>
+   </Pane>
+</VBox>
