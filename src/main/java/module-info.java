@@ -5,6 +5,7 @@ module com.example.economic.development {
     requires org.controlsfx.controls;
     requires com.opencsv;
     requires static lombok;
+    requires smile.core;
 
     opens com.example.economic.development.model to javafx.base;
     opens com.example.economic.development to javafx.fxml;

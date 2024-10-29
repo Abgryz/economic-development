@@ -15,7 +15,8 @@ public class EconomicDevelopment extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setTitle("Economic Development");
+        primaryStage.setScene(new Scene(root, 1375, 900));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

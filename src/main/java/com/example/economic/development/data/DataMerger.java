@@ -8,10 +8,11 @@ import javafx.collections.ObservableList;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class DataMerger {
 
-    public static final LinkedHashMap<String, CountryData> COUNTRY_DATA = new LinkedHashMap<>();
+    private static final LinkedHashMap<String, CountryData> COUNTRY_DATA = new LinkedHashMap<>();
 
     public static ObservableList<CountryData> loadData() {
 
@@ -30,9 +31,9 @@ public class DataMerger {
                 var inflation = inflationData.get(i)[j];
 
                 countryData.addYearData(Integer.parseInt(gdpData.get(0)[j]), new EconomicalData(
-                        gdp.isEmpty() ? null : Double.parseDouble(gdp),
-                        unemployment.isEmpty() ? null : Double.parseDouble(unemployment),
-                        inflation.isEmpty() ? null : Double.parseDouble(inflation)
+                        gdp.isEmpty() ? 0 : Double.parseDouble(gdp),
+                        unemployment.isEmpty() ? 0 : Double.parseDouble(unemployment),
+                        inflation.isEmpty() ? 0 : Double.parseDouble(inflation)
                 ));
             }
 
@@ -40,5 +41,9 @@ public class DataMerger {
         }
 
         return FXCollections.observableList(COUNTRY_DATA.values().stream().toList());
+    }
+
+    public static List<CountryData> getCountryData() {
+        return COUNTRY_DATA.values().stream().toList();
     }
 }

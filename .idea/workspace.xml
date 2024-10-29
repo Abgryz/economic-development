@@ -4,23 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a4cf5-c298-4e28-944b-e29d22d47d26" name="Changes" comment="init commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/ApplicationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/EconomicDevelopment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/data/CsvLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/data/DataMerger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/model/CountryData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/model/EconomicalData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/economic/development/sample.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gdp.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/inflation.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/unemployment.csv" afterDir="false" />
+    <list default="true" id="290a4cf5-c298-4e28-944b-e29d22d47d26" name="Changes" comment="economical data loading">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/clasterisation/ClusterAnalysis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economicdevelopment/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economicdevelopment/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economic/development/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/ApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economic/development/EconomicDevelopment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/EconomicDevelopment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economic/development/data/DataMerger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/data/DataMerger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/economicdevelopment/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/economic/development/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/economic/development/sample.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +149,8 @@
       <updated>1729851394959</updated>
       <workItem from="1729851396035" duration="1261000" />
       <workItem from="1729979384448" duration="7572000" />
-      <workItem from="1730040204208" duration="7442000" />
+      <workItem from="1730040204208" duration="12670000" />
+      <workItem from="1730120227884" duration="5947000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -167,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729851779267</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="economical data loading">
+      <option name="closed" value="true" />
+      <created>1730048038717</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730048038717</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +176,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+    <MESSAGE value="economical data loading" />
+    <option name="LAST_COMMIT_MESSAGE" value="economical data loading" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

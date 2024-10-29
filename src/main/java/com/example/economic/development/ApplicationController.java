@@ -1,8 +1,10 @@
 package com.example.economic.development;
 
+import com.example.economic.development.clasterisation.ClusterAnalysis;
 import com.example.economic.development.data.DataMerger;
 import com.example.economic.development.model.CountryData;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -10,15 +12,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.Optional;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ApplicationController {
 
     @FXML
-    private TableColumn<CountryData, String> countryCode;
+    private TableView<CountryData> countryTable;
 
     @FXML
-    private TableView<CountryData> countryTable;
+    private TableColumn<CountryData, String> countryCode;
 
     @FXML
     private TableColumn<CountryData, String> countyName;
@@ -32,11 +37,18 @@ public class ApplicationController {
     @FXML
     private TableColumn<CountryData, Double> unemployment;
 
+
     @FXML
-    private Button yearButton;
+    private TableView<Map.Entry<Integer, String>> clusterTable;
+
+    @FXML
+    private Button clusterButton;
 
     @FXML
     private TextField yearField;
+
+    @FXML
+    private TextField clusterCount;
 
     private Integer selectedYear = 2023;
 
@@ -48,40 +60,103 @@ public class ApplicationController {
         initTableColumns();
         countryTable.setItems(DataMerger.loadData());
 
-        yearButton.setOnAction(event -> onYearButtonClick());
+        clusterButton.setOnAction(event -> onClusterButtonClick());
     }
 
-    private void onYearButtonClick() {
+    private void onClusterButtonClick() {
 
-        var yearText = yearField.getText();
-        if (!yearText.isEmpty() && yearText.matches("\\d+")) {
-            selectedYear = Integer.parseInt(yearText); // Оновлюємо обраний рік
-            initTableColumns();
-            countryTable.refresh(); // Оновлюємо відображення таблиці
+        selectedYear = getNumberValue(yearField);
+        if (selectedYear <= 0) {
+            return;
         }
+
+        initTableColumns();
+        countryTable.refresh();
+
+        var clusterAnalysis = new ClusterAnalysis();
+        var selectedClusterCount = getNumberValue(clusterCount);
+        if (selectedClusterCount <= 1) {
+            return;
+        }
+        var clusters = clusterAnalysis.clusterCountriesHierarchically(DataMerger.getCountryData(), selectedYear, selectedClusterCount);
+        createClusterTable(clusters);
     }
 
     private void initTableColumns() {
 
+        // Встановлюємо кастомний CellValueFactory для колонок
         gdp.setCellValueFactory(cellData -> {
             var countryData = cellData.getValue();
-            return Optional.ofNullable(countryData.getYearData(selectedYear))
-                    .map(data -> new SimpleDoubleProperty(data.getGdp()).asObject())
-                    .orElse(null);
+            var economicalData = countryData.getYearData(selectedYear);
+            if (economicalData != null && economicalData.getGdp() != 0) {
+                return new SimpleDoubleProperty(economicalData.getGdp()).asObject();
+            }
+            return null;
         });
 
         inflation.setCellValueFactory(cellData -> {
             var countryData = cellData.getValue();
-            return Optional.ofNullable(countryData.getYearData(selectedYear))
-                    .map(data -> new SimpleDoubleProperty(data.getInflation()).asObject())
-                    .orElse(null);
+            var economicalData = countryData.getYearData(selectedYear);
+            if (economicalData != null && economicalData.getInflation() != 0) {
+                return new SimpleDoubleProperty(economicalData.getInflation()).asObject();
+            }
+            return null;
         });
 
         unemployment.setCellValueFactory(cellData -> {
             var countryData = cellData.getValue();
-            return Optional.ofNullable(countryData.getYearData(selectedYear))
-                    .map(data -> new SimpleDoubleProperty(data.getUnemployment()).asObject())
-                    .orElse(null);
+            var economicalData = countryData.getYearData(selectedYear);
+            if (economicalData != null && economicalData.getUnemployment() != 0) {
+                return new SimpleDoubleProperty(economicalData.getUnemployment()).asObject();
+            }
+            return null;
         });
+    }
+
+    private int getNumberValue(TextField text) {
+        var value = text.getText();
+        if (!value.isEmpty() && value.matches("\\d+")) {
+            return Integer.parseInt(value);
+        }
+        return 0;
+    }
+
+    private void createClusterTable(Map<Integer, List<CountryData>> clusterMap) {
+
+        clusterTable.getColumns().clear();
+        setClusterTableColumns(clusterMap);
+
+        // Підготовка рядків (кількість рядків дорівнює максимальній кількості країн у будь-якому кластері)
+        int maxRows = clusterMap.values().stream()
+                .mapToInt(List::size)
+                .max()
+                .orElse(0);
+
+        List<Map.Entry<Integer, String>> rows = new ArrayList<>(maxRows);
+        for (int i = 0; i < maxRows; i++) {
+            rows.add(new AbstractMap.SimpleEntry<>(i, ""));
+        }
+
+        clusterTable.getItems().setAll(rows);
+    }
+
+    private void setClusterTableColumns(Map<Integer, List<CountryData>> clusterMap){
+
+        for (var entry : clusterMap.entrySet()) {
+            var clusterId = entry.getKey();
+            var countries = entry.getValue();
+
+            TableColumn<Map.Entry<Integer, String>, String> clusterColumn = new TableColumn<>("Кластер " + (clusterId + 1));
+            clusterColumn.setCellValueFactory(cellData -> {
+                int rowIndex = clusterTable.getItems().indexOf(cellData.getValue());
+                if (rowIndex >= 0 && rowIndex < countries.size()) {
+                    return new SimpleStringProperty(countries.get(rowIndex).getName());
+                } else {
+                    return new SimpleStringProperty(""); // Порожнє значення, якщо країн менше, ніж рядків
+                }
+            });
+
+            clusterTable.getColumns().add(clusterColumn);
+        }
     }
 }
