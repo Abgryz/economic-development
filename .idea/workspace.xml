@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290a4cf5-c298-4e28-944b-e29d22d47d26" name="Changes" comment="economical data loading">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/clasterisation/ClusterAnalysis.java" afterDir="false" />
+    <list default="true" id="290a4cf5-c298-4e28-944b-e29d22d47d26" name="Changes" comment="country clustering">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/ErrorDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economic/development/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/ApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economic/development/EconomicDevelopment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/EconomicDevelopment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economic/development/data/DataMerger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/data/DataMerger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/economic/development/clasterisation/ClusterAnalysis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/economic/development/clasterisation/ClusterAnalysis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/economic/development/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/economic/development/sample.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,26 +43,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CsvLoader.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EconomicDevelopment.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.example.economic.development.EconomicDevelopment.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CsvLoader.executor": "Run",
+    "Application.EconomicDevelopment.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.com.example.economic.development.EconomicDevelopment.executor": "Run",
+    "Maven.EconomicDevelopment [org.apache.maven.plugins:maven-jar-plugin:3.3.0:jar].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Abgryz/IdeaProjects/Economic Development",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Abgryz\IdeaProjects\Economic Development\src\main\resources" />
@@ -150,7 +150,10 @@
       <workItem from="1729851396035" duration="1261000" />
       <workItem from="1729979384448" duration="7572000" />
       <workItem from="1730040204208" duration="12670000" />
-      <workItem from="1730120227884" duration="5947000" />
+      <workItem from="1730120227884" duration="6216000" />
+      <workItem from="1730201736402" duration="5378000" />
+      <workItem from="1731536256829" duration="1015000" />
+      <workItem from="1732529019327" duration="1205000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -168,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730048038717</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="country clustering">
+      <option name="closed" value="true" />
+      <created>1730160325723</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730160325723</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,7 +188,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
     <MESSAGE value="economical data loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="economical data loading" />
+    <MESSAGE value="country clustering" />
+    <option name="LAST_COMMIT_MESSAGE" value="country clustering" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

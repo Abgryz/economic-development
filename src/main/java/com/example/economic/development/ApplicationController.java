@@ -65,8 +65,10 @@ public class ApplicationController {
 
     private void onClusterButtonClick() {
 
+        var errorDialog = new ErrorDialog("Помилка", "Помилка валідації даних");
         selectedYear = getNumberValue(yearField);
-        if (selectedYear <= 0) {
+        if (selectedYear < 1960 || selectedYear > 2023) {
+            errorDialog.show("Введіть коректний рік");
             return;
         }
 
@@ -76,6 +78,7 @@ public class ApplicationController {
         var clusterAnalysis = new ClusterAnalysis();
         var selectedClusterCount = getNumberValue(clusterCount);
         if (selectedClusterCount <= 1) {
+            errorDialog.show("Введіть коректну кількість кластерів");
             return;
         }
         var clusters = clusterAnalysis.clusterCountriesHierarchically(DataMerger.getCountryData(), selectedYear, selectedClusterCount);
@@ -84,7 +87,6 @@ public class ApplicationController {
 
     private void initTableColumns() {
 
-        // Встановлюємо кастомний CellValueFactory для колонок
         gdp.setCellValueFactory(cellData -> {
             var countryData = cellData.getValue();
             var economicalData = countryData.getYearData(selectedYear);
@@ -126,7 +128,6 @@ public class ApplicationController {
         clusterTable.getColumns().clear();
         setClusterTableColumns(clusterMap);
 
-        // Підготовка рядків (кількість рядків дорівнює максимальній кількості країн у будь-якому кластері)
         int maxRows = clusterMap.values().stream()
                 .mapToInt(List::size)
                 .max()
@@ -152,7 +153,7 @@ public class ApplicationController {
                 if (rowIndex >= 0 && rowIndex < countries.size()) {
                     return new SimpleStringProperty(countries.get(rowIndex).getName());
                 } else {
-                    return new SimpleStringProperty(""); // Порожнє значення, якщо країн менше, ніж рядків
+                    return new SimpleStringProperty("");
                 }
             });
 

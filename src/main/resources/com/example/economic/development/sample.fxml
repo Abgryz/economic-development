@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1423.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.economic.development.ApplicationController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1375.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.economic.development.ApplicationController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <Pane prefHeight="860.0" prefWidth="696.0" VBox.vgrow="ALWAYS">
+   <Pane prefHeight="860.0" prefWidth="1315.0" VBox.vgrow="ALWAYS">
       <children>
          <Pane layoutY="8.0" prefWidth="760.0">
             <children>
@@ -28,7 +28,7 @@
             <columns>
                 <TableColumn fx:id="countyName" prefWidth="163.0" text="Назва країни" />
                 <TableColumn fx:id="countryCode" prefWidth="83.0" text="Код країни" />
-                <TableColumn fx:id="gdp" prefWidth="145.0" text="ВВП" />
+                <TableColumn fx:id="gdp" prefWidth="145.0" text="ВВП на душу населення" />
                 <TableColumn fx:id="unemployment" prefWidth="124.0" text="Безробіття" />
                 <TableColumn fx:id="inflation" prefWidth="125.0" text="Інфляція" />
             </columns>

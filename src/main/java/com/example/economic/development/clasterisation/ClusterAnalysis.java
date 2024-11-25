@@ -15,7 +15,7 @@ public class ClusterAnalysis {
         var data = getData(countryDataList, year);
 
         var proximity = Linkage.proximity(data);
-        Linkage linkage = new CompleteLinkage(data.length, proximity);
+        Linkage linkage = new WardLinkage(data.length, proximity);
         HierarchicalClustering hc = HierarchicalClustering.fit(linkage);
 
         int[] clusters = hc.partition(clustersCount);
